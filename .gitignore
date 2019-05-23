@@ -19,3 +19,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# all dot files except .gitignore
+.*
+!.gitignore
