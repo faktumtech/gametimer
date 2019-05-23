@@ -1,4 +1,6 @@
-# gametimer
+# GameTimer 
+
+https://gametimer.org
 
 A small timer application for games like Rummikub.
 
