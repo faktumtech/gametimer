@@ -55,7 +55,7 @@
               <v-flex xs12 sm6 md4>
                 <p>A player's turn in games like Rummikub (<a href="https://en.wikipedia.org/wiki/Rummikub">https://en.wikipedia.org/wiki/Rummikub</a>) is limited by time. GameTimer has been created as an easy way to control the time used by each player during his turn.</p>
                 <p>This aplication is build as Progressive Web Application (PWA) and once installed ('Add to desktop'), can be used offline.</p>
-                <p>Copyright <b>cfbutt</b>. Licensed under GPL v3. Source code at <a href="https://github.com/cfbutt/GameTimer">https://github.com/cfbutt/GameTimer</a>.</p>
+                <p>Copyright <b>cfbutt</b>. Licensed under GPL v3. Source code at <a href="https://github.com/cfbutt/gametimer">https://github.com/cfbutt/gametimer</a>.</p>
               </v-flex>
             </v-layout>
           </v-container>

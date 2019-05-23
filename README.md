@@ -1,6 +1,6 @@
 # gametimer
 
-GameTimer is a small timer application for games like Rummikub.
+A small timer application for games like Rummikub.
 
 A player's turn in games like Rummikub (https://en.wikipedia.org/wiki/Rummikub) is limited by time. GameTimer has been created as an easy way to control the time used by each player during his turn.
 
