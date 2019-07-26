@@ -6,8 +6,10 @@ A small timer application for games like Rummikub.
 
 A player's turn in games like Rummikub (https://en.wikipedia.org/wiki/Rummikub) is limited by time. GameTimer has been created as an easy way to control the time used by each player during his turn.
 
-This aplication is build as Progressive Web Application (PWA) and once installed ('Add to desktop'), can be used offline.
+This application is build as a Progressive Web Application (PWA) and once installed ('Add to desktop') it can be used offline.
 
+## Pending issues
+-
 
 ## Project setup
 ```
