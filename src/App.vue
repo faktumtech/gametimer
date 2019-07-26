@@ -133,11 +133,9 @@ export default {
 
       // use web audio api
       // https://stackoverflow.com/questions/29567580/play-a-beep-sound-on-button-click
-      this.audioContext = new AudioContext();
-
+      this.audioContext = new AudioContext()
     },
     start: function (id) {
-
       // beep once
       this.beep()
       // clear any active timer
@@ -185,18 +183,17 @@ export default {
 
       var frequency = 500 // hz
       var duration = 100 // ms
-      var vol = 100
+      var vol = 100 // %
 
-      var v=this.audioContext.createOscillator()
-      var u=this.audioContext.createGain()
+      var v = this.audioContext.createOscillator()
+      var u = this.audioContext.createGain()
       v.connect(u)
-      v.frequency.value=frequency
-      v.type="square"
+      v.frequency.value = frequency
+      v.type = 'square'
       u.connect(this.audioContext.destination)
-      u.gain.value=vol*0.01
+      u.gain.value = vol * 0.01
       v.start(this.audioContext.currentTime)
-      v.stop(this.audioContext.currentTime+duration*0.001)
-
+      v.stop(this.audioContext.currentTime + duration * 0.001)
     },
     longTab: function () {
       // if active timer longTab will reset

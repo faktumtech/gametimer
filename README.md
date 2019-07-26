@@ -8,8 +8,6 @@ A player's turn in games like Rummikub (https://en.wikipedia.org/wiki/Rummikub) 
 
 This application is build as a Progressive Web Application (PWA) and once installed ('Add to desktop') it can be used offline.
 
-## Pending issues
--
 
 ## Project setup
 ```
