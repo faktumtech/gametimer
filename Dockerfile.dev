@@ -1,0 +1,36 @@
+# gametimer dockerfile for development
+
+# build with:
+# docker build -f Dockerfile.dev -t gametimer.dev .
+
+# run with:
+# docker run --rm -it -p 8080:8080 -v $PWD:/gametimer -v /gametimer/node_modules/ gametimer.dev
+
+# run opening one time bash shell:
+# docker run --rm -it --entrypoint /bin/bash -p 8080:8080 -v $PWD:/gametimer -v /gametimer/node_modules/ gametimer.dev
+
+
+FROM node:10
+
+# workdir in image
+WORKDIR /gametimer
+
+# instead of copying the code to the workdir we create a bindmount volume 
+# through docker-compose or "docker run -v"
+# Since the bindmount is not available during build, we still 
+# need to copy package.json and package-lock.json
+# COPY package.json ./package.json
+# COPY package-lock.json ./package-lock.json
+COPY package*.json ./
+
+# install dependencies
+RUN npm install
+
+# Document where a service is available, but not create any mapping to the host
+EXPOSE 8080
+
+# start dev server
+CMD [ "npm", "run", "serve" ]
+
+# open bash shell
+# CMD [ "/bin/bash", "-e" ]

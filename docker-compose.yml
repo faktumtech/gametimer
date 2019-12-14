@@ -1,0 +1,24 @@
+## build
+# docker-compose build
+## start dev server
+# docker-compose up
+## run interactively with one time command (shell)
+# docker-compose run --rm gametimer bash
+version: '3'
+services:
+  gametimer:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    # If you specify image as well as build, then Compose names the built according to image
+    image: gametimer.dev
+    working_dir: /gametimer
+    volumes:
+      # mount current directory to container
+      - $PWD:/gametimer:cached 
+      # exclude node_modules
+      # https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
+      - /gametimer/node_modules/
+    # expose ports at host
+    ports:
+    - "8080:8080"
