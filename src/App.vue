@@ -12,7 +12,11 @@
           dark
           color="#4DBA87"
         >
-          <v-btn icon dark @click="closeConfig">
+          <v-btn
+            icon
+            dark
+            @click="closeConfig"
+          >
             <v-icon>
               $vuetify.icons.arrowBack
             </v-icon>
@@ -140,7 +144,7 @@ export default {
         alert('Web Audio API is not supported in this browser')
       }
     },
-    start: function (id) {
+    start: function () {
       // audioContext is started as suspended in IOS and can
       // only be resumed by explicit user action
       // use start click to resume audioContest and beep once
@@ -186,7 +190,7 @@ export default {
         }
       }.bind(this), 50)
     },
-    reset: function (id) {
+    reset: function () {
       clearInterval(this.timer)
       this.activeTimer = false
       this.timerText = this.startText

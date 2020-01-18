@@ -1,13 +1,13 @@
 # gametimer dockerfile
 # create new nginx image and copy build gametimer app
 
-# build (prefix with 'cfbutt/' if you want to push to docker hub):
+# build (prefix with 'cfbutt/' if you want to push to docker hub)
 # docker build -t gametimer .
 
 # push to docker hub
-# docker push ???
+# docker push cfbutt/gametimer
 
-# save image for deploy without using hub:
+# save image for deploy without using hub
 # docker save -o gametimer.docker.tar gametimer
 
 # send image to remote host
@@ -16,10 +16,13 @@
 # execute commands on remote host
 # ssh -p[PORT] -4 [USER]@[IP] '[command / docker command]'
 
-# import image without using hub:
+# pull image from docker hub
+# docker pull cfbutt/gametimer
+
+# import image without using hub
 # docker load -i gametimer.docker.tar
 
-# run as daemon with (exposing 3006):
+# run as daemon with (exposing 3006)
 # docker run --name gametimer_container -d --restart=unless-stopped -p 3006:80 gametimer
 
 # stop container
