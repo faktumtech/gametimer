@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib'
 import IconArrowBack from '../components/IconArrowBack'
 
-Vue.use(Vuetify);
+Vue.use(Vuetify)
 
 export default new Vuetify({
     icons: {
@@ -12,4 +12,4 @@ export default new Vuetify({
             }
         }
     } 
-});
+})

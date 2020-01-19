@@ -28,24 +28,33 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout column warp>
-              <v-flex xs12 sm6 md4>
+            <v-layout
+              column
+              warp
+            >
+              <v-flex
+                xs12
+                sm6
+                md4
+              >
                 <v-text-field
                   v-model="maxTime"
                   label="Total time (sec)*"
                   required
                   type="number"
-                >
-                </v-text-field>
+                />
               </v-flex>
-              <v-flex xs12 sm6 md4>
+              <v-flex
+                xs12
+                sm6
+                md4
+              >
                 <v-text-field
                   v-model="alertTime"
                   label="Alert time (sec)*"
                   required
                   type="number"
-                >
-                </v-text-field>
+                />
               </v-flex>
             </v-layout>
           </v-container>
@@ -55,8 +64,15 @@
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout column warp>
-              <v-flex xs12 sm6 md4>
+            <v-layout
+              column
+              warp
+            >
+              <v-flex
+                xs12
+                sm6
+                md4
+              >
                 <p>A player's turn in games like Rummikub (<a href="https://en.wikipedia.org/wiki/Rummikub">https://en.wikipedia.org/wiki/Rummikub</a>) is limited by time. GameTimer has been created as an easy way to control the time used by each player during his turn.</p>
                 <p>This application is build as a Progressive Web Application (PWA) and once installed ('Add to desktop') it can be used offline. If no sound is played make sure you have switched off <b>silence mode</b> on you phone.</p>
                 <p>Copyright <b>cfbutt</b>. Licensed under GPL v3. Source code at <a href="https://github.com/cfbutt/gametimer">https://github.com/cfbutt/gametimer</a>.</p>
@@ -67,25 +83,30 @@
       </v-card>
     </v-dialog>
 
-    <v-content
-    >
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center>
+    <v-content>
+      <v-container
+        fluid
+        fill-height
+      >
+        <v-layout
+          align-center
+          justify-center
+        >
           <v-flex xs12>
-            <div class="timerWrap text-xs-center">
+            <div class="timerWrap text-center">
               <v-btn
+                v-touch:longtap="longTab"
+                v-touch:tap="start"
                 :color="btnColor"
                 fab
                 large
                 dark
                 class="timerBtn"
-                v-touch:longtap="longTab"
-                v-touch:tap="start"
-                >
+              >
                 <div>
-                  <span class="timerText">{{timerText}}</span>
+                  <span class="timerText">{{ timerText }}</span>
                   <br>
-                  <span class="timerInfo">{{timerInfo}}</span>
+                  <span class="timerInfo">{{ timerInfo }}</span>
                 </div>
               </v-btn>
             </div>
@@ -99,7 +120,7 @@
 <script>
 
 export default {
-  name: 'app',
+  name: 'App',
   data () {
     return {
       alert: true,
