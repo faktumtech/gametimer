@@ -172,7 +172,7 @@ export default {
       if (this.audioContext.state === 'running') {
         this.beep()
       } else if (this.audioContext.state === 'suspended') {
-        this.audioContext.resume().then(function () {
+        this.audioContext.resume().then(() => {
           this.beep()
         })
       } else {
