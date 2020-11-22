@@ -1,8 +1,10 @@
 .DS_Store
 node_modules
 /dist
+deploy.sh
 *.tar.gz
 *.tar
+*.zip
 __pycache__
 .vscode
 *.sav

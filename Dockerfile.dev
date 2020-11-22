@@ -10,7 +10,7 @@
 # docker run --rm -it --entrypoint /bin/bash -p 8080:8080 -v $PWD:/gametimer -v /gametimer/node_modules/ gametimer.dev
 
 
-FROM node:10
+FROM node:14
 
 # workdir in image
 WORKDIR /gametimer
@@ -19,8 +19,6 @@ WORKDIR /gametimer
 # through docker-compose or "docker run -v"
 # Since the bindmount is not available during build, we still 
 # need to copy package.json and package-lock.json
-# COPY package.json ./package.json
-# COPY package-lock.json ./package-lock.json
 COPY package*.json ./
 
 # install dependencies
