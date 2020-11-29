@@ -33,7 +33,6 @@ function stop (event) {
 export default {
   bind: function (el, _binding) {
     binding = _binding
-
     el.addEventListener(startEvent, start)
     el.addEventListener(stopEvent, stop)
   },
