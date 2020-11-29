@@ -5,6 +5,9 @@
 
 ## Changelog
 
+v0.4.3
+- update packages
+
 v0.4.2
 - bug: Long press triggers also short press Can not stop timer permanently on IOS
 
