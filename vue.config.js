@@ -15,6 +15,12 @@ module.exports = {
         })
     ]
   },
+  // enable eslint standard autofix on save
+  chainWebpack: config => {
+    config.module.rule('eslint').use('eslint-loader').options({
+      fix: true
+    })
+  },  
   transpileDependencies: [
     'vuetify'
   ]

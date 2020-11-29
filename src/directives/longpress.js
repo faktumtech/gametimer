@@ -2,9 +2,15 @@
  * Simple directive to catch click/touch vs long-click/long-touch
  */
 
-var binding
-var timeout
-var longpressTime = 400 // time in ms to count as long press
+let binding
+let timeout
+// time in ms to count as long press
+const longpressTime = 400
+// check if we're using a touch screen
+const isTouch = ('ontouchstart' in window)
+// switch to touch events if using a touch screen
+const startEvent = isTouch ? 'touchstart' : 'mousedown'
+const stopEvent = isTouch ? 'touchend' : 'mouseup'
 
 function start (event) {
   if (timeout) {
@@ -13,7 +19,6 @@ function start (event) {
   timeout = setTimeout(function () {
     timeout = false
     binding.value('long')
-    // console.log('long')
   }, longpressTime)
 }
 
@@ -22,7 +27,6 @@ function stop (event) {
     clearTimeout(timeout)
     timeout = false
     binding.value('short')
-    // console.log('short')
   }
 }
 
@@ -30,17 +34,11 @@ export default {
   bind: function (el, _binding) {
     binding = _binding
 
-    el.addEventListener('touchstart', start)
-    // el.addEventListener('touchcancel', cancel)
-    el.addEventListener('touchend', stop)
-    el.addEventListener('mousedown', start)
-    el.addEventListener('mouseup', stop)
+    el.addEventListener(startEvent, start)
+    el.addEventListener(stopEvent, stop)
   },
   unbind: function (el) {
-    el.removeEventListener('touchstart')
-    // el.removeEventListener('touchcancel')
-    el.removeEventListener('touchend')
-    el.removeEventListener('mousedown')
-    el.removeEventListener('mouseup')
+    el.removeEventListener(startEvent)
+    el.removeEventListener(stopEvent)
   }
 }
