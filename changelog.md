@@ -5,6 +5,12 @@
 
 ## Changelog
 
+v0.4.5
+- update packages
+
+v0.4.4
+- remove babel.config.js
+
 v0.4.3
 - update packages
 
