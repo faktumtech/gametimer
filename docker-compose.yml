@@ -1,4 +1,4 @@
-## build
+## build (use --no-cache to force rebuild)
 # docker-compose build
 ## start dev server
 # docker-compose up
@@ -12,6 +12,7 @@ services:
       dockerfile: Dockerfile.dev
     # If you specify image as well as build, then Compose names the built according to image
     image: gametimer.dev
+    container_name: gametimer_dev_container
     working_dir: /gametimer
     volumes:
       # mount current directory to container

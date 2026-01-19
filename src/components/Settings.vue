@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="show"
+    v-model="modelValue.show"
     fullscreen
     hide-overlay
     transition="slide-x-transition"
@@ -8,25 +8,33 @@
   >
     <v-card>
       <v-toolbar
-        dark
-        color="#4DBA87"
+        color="#4CAF50"
+        theme="dark"
       >
         <v-btn
           icon
-          dark
           @click="closeConfig"
         >
           <v-icon>
-            $vuetify.icons.arrowBack
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              ><path
+                style="fill: white"
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              /></svg>
           </v-icon>
         </v-btn>
-        <v-toolbar-title>GameTimer</v-toolbar-title>
+        <v-toolbar-title
+        >GameTimer</v-toolbar-title>
       </v-toolbar>
       <v-card-title>
-        <h3>Settings</h3>
+        <div class="text-h5 pa-5">Settings</div>
       </v-card-title>
       <v-card-text>
-        <v-container grid-list-md>
+        <v-container class="py-0">
           <v-row>
             <v-col
               cols="12"
@@ -34,6 +42,7 @@
             >
               <v-text-field
                 v-model="maxTime"
+                variant="underlined"
                 label="Total time (sec)*"
                 required
                 type="number"
@@ -47,6 +56,7 @@
             >
               <v-text-field
                 v-model="alertTime"
+                variant="underlined"
                 label="Alert time (sec)*"
                 required
                 type="number"
@@ -65,22 +75,20 @@
         </v-container>
       </v-card-text>
       <v-card-title>
-        <h3>About GameTimer</h3>
+        <div class="text-h5 pa-5">About GameTimer</div>
       </v-card-title>
       <v-card-text>
-        <v-container grid-list-md>
+        <v-container class="py-0">
           <v-row
-            column
-            warp
           >
             <v-col
-              xs12
-              sm6
-              md4
+              cols="12"
+              sm="8"
+              xl="6"
             >
               <p>A player's turn in games like Rummikub (<a href="https://en.wikipedia.org/wiki/Rummikub">https://en.wikipedia.org/wiki/Rummikub</a>) is limited by time. GameTimer has been created as an easy way to control the time used by each player during his turn.</p>
               <p>This application is designed as a Progressive Web Application (PWA) and once installed ('Add to desktop') it can be used offline. If no sound is played make sure you have switched off <b>silence mode</b> on you phone.</p>
-              <p><b>App Version {{ appVersion }}.</b></p>
+              <p>App Version <b>{{ appVersion }}</b>.</p>
               <p>Copyright <b>cfbutt</b>. Licensed under GPL v3.</p>
               <p>Source code at <a href="https://github.com/cfbutt/gametimer">https://github.com/cfbutt/gametimer</a>.</p>
             </v-col>
@@ -95,17 +103,14 @@
 
 export default {
   props: {
-    value: {
-      type: Boolean,
-      default: false
-    },
-    settings: {
+    modelValue: {
       type: Object,
       default () {
         return {
           maxTime: null,
           alertTime: null,
-          dark: null
+          dark: null,
+          show: false
         }
       }
     }
@@ -115,30 +120,22 @@ export default {
       maxTime: null,
       alertTime: null,
       dark: null,
-      appVersion: process.env.PACKAGE_VERSION || '0'
-    }
-  },
-  computed: {
-    show: {
-      get () {
-        return this.value
-      },
-      set (value) {
-        this.$emit('input', value)
-      }
+      appVersion: PACKAGE_VERSION || '0'
     }
   },
   watch: {
-    show: function () {
+    "modelValue.show": function () {
       // this could also be done on mounted
       // but then it would not get updated each time the dialog is opened
-      this.maxTime = this.settings.maxTime
-      this.alertTime = this.settings.alertTime
-      this.dark = this.settings.dark
+      this.maxTime = this.modelValue.maxTime
+      this.alertTime = this.modelValue.alertTime
+      this.dark = this.modelValue.dark
+
     },
     dark: function (dark) {
       // show effect of dark immediately
-      this.$vuetify.theme.dark = (dark)
+      const updatedSettings = {...this.modelValue, ...{dark}}
+      this.$emit('update:modelValue', (updatedSettings))
     }
   },
   methods: {
@@ -146,13 +143,13 @@ export default {
       const updatedSettings = {
         maxTime: +this.maxTime,
         alertTime: +this.alertTime,
-        dark: (this.dark)
+        dark: (this.dark),
+        show: false
       }
       window.localStorage.setItem('maxtime', updatedSettings.maxTime)
       window.localStorage.setItem('alerttime', updatedSettings.alertTime)
       window.localStorage.setItem('dark', updatedSettings.dark)
-      this.$emit('update:settings', updatedSettings)
-      this.show = false
+      this.$emit('update:modelValue', updatedSettings)
     }
   }
 }

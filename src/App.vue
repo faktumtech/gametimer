@@ -1,23 +1,22 @@
 <template>
-  <v-app>
+  <v-app
+    :theme="settings.dark ? 'dark' : 'light'"
+  >
     <v-main>
       <v-container
-        fluid
-        fill-height
+        class="fill-height"
       >
         <v-row
-          align-center
-          justify-center
         >
-          <v-col xs12>
+          <v-col>
             <div class="timerWrap text-center">
               <v-btn
+                icon
                 v-longpress="touch"
                 :color="btnColor"
-                fab
-                large
-                dark
+                size="large"
                 class="timerBtn"
+                elevation="4"
               >
                 <div>
                   <span class="timerText">{{ timerText }}</span>
@@ -32,8 +31,7 @@
     </v-main>
     <SwUpdate />
     <Settings
-      v-model="showSettings"
-      :settings.sync="settings"
+      v-model="settings"
     />
   </v-app>
 </template>
@@ -50,11 +48,11 @@ export default {
   },
   data () {
     return {
-      showSettings: false,
       settings: {
         maxTime: 60,
         alertTime: 15,
-        dark: false
+        dark: false,
+        show: false
       },
       btnColor: '#4CAF50',
       timerText: '',
@@ -99,6 +97,7 @@ export default {
       try {
         window.AudioContext = window.AudioContext || window.webkitAudioContext
         this.audioContext = new AudioContext()
+        // console.log(this.audioContext)
       } catch (e) {
         alert('Web Audio API is not supported in this browser')
       }
@@ -138,7 +137,8 @@ export default {
       // lets use exact time instead of timer interval to measure the elapsed time
       const startTime = new Date().getTime() / 1000
       let lastAlertBeep = false
-      this.btnColor = 'success'
+      this.btnColor = '#4CAF50' // Green
+      // this.btnColor = 'success'
 
       // start timer
       this.timer = setInterval(function () {
@@ -184,7 +184,7 @@ export default {
       myOscillator.stop(this.audioContext.currentTime + duration * 0.001)
     },
     openConfig: function () {
-      this.showSettings = true
+      this.settings.show = true
     }
   }
 }
@@ -199,16 +199,20 @@ export default {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
   }
-
+  p {
+    margin-bottom: 16px;
+  }
   .timerBtn {
     height: 80vmin !important;
     width: 80vmin !important;
   }
   .timerText {
     font-size: 12vmin !important;
+    color: white;
   }
   .timerInfo {
     font-size: 3vmin !important;
     text-transform: none !important;
+    color: white;
   }
 </style>

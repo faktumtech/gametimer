@@ -10,7 +10,7 @@
 # docker run --rm -it --entrypoint /bin/bash -p 8080:8080 -v $PWD:/gametimer -v /gametimer/node_modules/ gametimer.dev
 
 
-FROM node:14
+FROM node:20-bookworm-slim
 
 # workdir in image
 WORKDIR /gametimer
@@ -28,7 +28,7 @@ RUN npm install
 EXPOSE 8080
 
 # start dev server
-CMD [ "npm", "run", "serve" ]
+CMD [ "npm", "run", "dev" ]
 
 # open bash shell
 # CMD [ "/bin/bash", "-e" ]

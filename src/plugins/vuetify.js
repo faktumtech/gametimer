@@ -1,28 +1,33 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
-import IconArrowBack from '../components/IconArrowBack'
+/**
+ * plugins/vuetify.js
+ *
+ * Framework documentation: https://vuetifyjs.com`
+ */
 
-Vue.use(Vuetify)
+// Styles
+// import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
 
-export default new Vuetify({
-  icons: {
-    values: {
-      arrowBack: {
-        component: IconArrowBack
-      }
-    }
-  },
+
+// Composables
+import { createVuetify } from 'vuetify'
+
+// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
+export default createVuetify({
   theme: {
     dark: false,
+
     themes: {
       light: {
-        // official properties
-        primary: '#4CAF50' // default
+        colors: {
+          primary: '#4CAF50', // Green
+        },
       },
       dark: {
-        // official properties
-        primary: '#4CAF50' // default
-      }
-    }
-  }
+        colors: {
+          primary: '#4CAF50', // Green
+        },
+      },
+    },
+  },
 })

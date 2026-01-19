@@ -2,6 +2,7 @@
  * Simple directive to catch click/touch vs long-click/long-touch
  */
 
+
 let binding
 let timeout
 // time in ms to count as long press
@@ -31,12 +32,12 @@ function stop (event) {
 }
 
 export default {
-  bind: function (el, _binding) {
+  beforeMount: function (el, _binding) {
     binding = _binding
     el.addEventListener(startEvent, start)
     el.addEventListener(stopEvent, stop)
   },
-  unbind: function (el) {
+  unmounted: function (el) {
     el.removeEventListener(startEvent)
     el.removeEventListener(stopEvent)
   }

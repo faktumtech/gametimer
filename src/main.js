@@ -1,14 +1,29 @@
-import Vue from 'vue'
+/**
+ * main.js
+ *
+ * Bootstraps Vuetify and other plugins then mounts the App`
+ */
+
+// Components
 import App from './App.vue'
-import vuetify from './plugins/vuetify'
-import './registerServiceWorker'
+
+// Composables
+import { createApp } from 'vue'
+
+// import './registerServiceWorker'
 import LongPress from './directives/longpress'
 
-Vue.directive('longpress', LongPress)
 
-Vue.config.productionTip = false
+// Plugins
+import { registerPlugins } from '@/plugins'
 
-new Vue({
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+app.directive('longpress', LongPress)
+
+
+
+registerPlugins(app)
+
+app.mount('#app')
+
+

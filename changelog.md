@@ -5,6 +5,12 @@
 
 ## Changelog
 
+v1.0.0
+- update dependencies
+
+v0.5.0
+- update to vue3 and vuetify3
+
 v0.4.5
 - update packages
 
