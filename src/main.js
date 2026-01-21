@@ -6,24 +6,14 @@
 
 // Components
 import App from './App.vue'
-
 // Composables
 import { createApp } from 'vue'
-
-// import './registerServiceWorker'
-import LongPress from './directives/longpress'
-
-
+// Directives
+import   LongPress from './directives/longpress'
 // Plugins
 import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
 app.directive('longpress', LongPress)
-
-
-
 registerPlugins(app)
-
 app.mount('#app')
-
-

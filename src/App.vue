@@ -6,8 +6,7 @@
       <v-container
         class="fill-height"
       >
-        <v-row
-        >
+        <v-row>
           <v-col>
             <div class="timerWrap text-center">
               <v-btn
@@ -20,7 +19,7 @@
               >
                 <div>
                   <span class="timerText">{{ timerText }}</span>
-                  <br>
+                  <br />
                   <span class="timerInfo">{{ timerInfo }}</span>
                 </div>
               </v-btn>
@@ -98,8 +97,9 @@ export default {
         window.AudioContext = window.AudioContext || window.webkitAudioContext
         this.audioContext = new AudioContext()
         // console.log(this.audioContext)
-      } catch (e) {
+      } catch (err) {
         alert('Web Audio API is not supported in this browser')
+        console.error(err)
       }
     },
     touch: function (arg) {

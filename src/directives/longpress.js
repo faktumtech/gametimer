@@ -13,7 +13,7 @@ const isTouch = ('ontouchstart' in window)
 const startEvent = isTouch ? 'touchstart' : 'mousedown'
 const stopEvent = isTouch ? 'touchend' : 'mouseup'
 
-function start (event) {
+function start () {
   if (timeout) {
     return
   }
@@ -23,7 +23,7 @@ function start (event) {
   }, longpressTime)
 }
 
-function stop (event) {
+function stop () {
   if (timeout) {
     clearTimeout(timeout)
     timeout = false

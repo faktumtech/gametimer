@@ -17,18 +17,17 @@
         >
           <v-icon>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              ><path
-                style="fill: white"
-                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
-              /></svg>
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            ><path
+              style="fill: white"
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            /></svg>
           </v-icon>
         </v-btn>
-        <v-toolbar-title
-        >GameTimer</v-toolbar-title>
+        <v-toolbar-title>GameTimer</v-toolbar-title>
       </v-toolbar>
       <v-card-title>
         <div class="text-h5 pa-5">Settings</div>
@@ -79,8 +78,7 @@
       </v-card-title>
       <v-card-text>
         <v-container class="py-0">
-          <v-row
-          >
+          <v-row>
             <v-col
               cols="12"
               sm="8"
@@ -120,11 +118,13 @@ export default {
       maxTime: null,
       alertTime: null,
       dark: null,
-      appVersion: PACKAGE_VERSION || '0'
+      appVersion: window.PACKAGE_VERSION || '0'
     }
   },
+
+
   watch: {
-    "modelValue.show": function () {
+    'modelValue.show': function () {
       // this could also be done on mounted
       // but then it would not get updated each time the dialog is opened
       this.maxTime = this.modelValue.maxTime

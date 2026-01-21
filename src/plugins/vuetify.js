@@ -20,14 +20,14 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
-          primary: '#4CAF50', // Green
-        },
+          primary: '#4CAF50' // Green
+        }
       },
       dark: {
         colors: {
-          primary: '#4CAF50', // Green
-        },
-      },
-    },
-  },
+          primary: '#4CAF50' // Green
+        }
+      }
+    }
+  }
 })
