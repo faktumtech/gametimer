@@ -1,6 +1,6 @@
 {
   "name": "gametimer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "npm run lint:watch & vite --host --port 8080",
@@ -14,14 +14,18 @@
     "vuetify": "^3.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
     "@vitejs/plugin-vue": "^6.0.3",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.38.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-vue": "^10.5.1",
     "eslint-plugin-vuetify": "^2.1.0",
+    "globals": "^17.1.0",
+    "rollup-plugin-visualizer": "^6.0.5",
     "vite": "^7.3.1",
     "vite-plugin-pwa": "^1.2.0",
-    "vite-plugin-vuetify": "^2.1.0"
+    "vite-plugin-vuetify": "^2.1.0",
+    "vue-eslint-parser": "^10.2.0"
   }
 }

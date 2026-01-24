@@ -29,6 +29,3 @@ EXPOSE 8080
 
 # start dev server
 CMD [ "npm", "run", "dev" ]
-
-# open bash shell
-# CMD [ "/bin/bash", "-e" ]

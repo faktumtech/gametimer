@@ -1,16 +1,7 @@
-/**
- * plugins/vuetify.js
- *
- * Framework documentation: https://vuetifyjs.com`
- */
-
-// Styles
-// import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-
-
-// Composables
 import { createVuetify } from 'vuetify'
+
+// we don´t use any icon set. The fue icons used are directly defined as svg in the components.
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({

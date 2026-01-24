@@ -8,9 +8,13 @@ import { defineConfig } from 'eslint/config'
 import vueParser from 'vue-eslint-parser'
 
 export default defineConfig([
+  // --- Global ignores -------------------------------------------------------
+  {
+    ignores: ['dev-dist/**', 'dist/**', 'node_modules/**']
+  },
+
   // --- Base JavaScript + Node/Vite environment -----------------------------
   {
-    ignores: ['dev-dist/**', 'dist/**', 'node_modules/**'],
     files: ['src/**/*.{js,mjs,cjs,ts}', '*.config.js'],
     languageOptions: {
       globals: {
@@ -35,7 +39,7 @@ export default defineConfig([
       'quotes': ['error', 'single'],
       'comma-dangle': ['error', 'never'],
       'indent': ['error', 2],
-      'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }],
+      'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1 }],
       'no-console': 'off',
       'no-trailing-spaces': 'warn',
 
@@ -72,7 +76,7 @@ export default defineConfig([
       'quotes': ['error', 'single'],
       'comma-dangle': ['error', 'never'],
       'indent': ['error', 2],
-      'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }],
+      'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1 }],
       'no-console': 'off',
       'no-trailing-spaces': 'warn',
 

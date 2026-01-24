@@ -2,7 +2,6 @@
  * Simple directive to catch click/touch vs long-click/long-touch
  */
 
-
 let binding
 let timeout
 // time in ms to count as long press

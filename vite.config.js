@@ -1,10 +1,8 @@
-// Plugins
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import { visualizer } from "rollup-plugin-visualizer";
 import { VitePWA } from 'vite-plugin-pwa'
-
-// Utilities
-import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
@@ -13,21 +11,34 @@ export default defineConfig({
     vue({
       template: { transformAssetUrls }
     }),
-    // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
     vuetify({
       autoImport: true
     }),
+    /* 
+     * visualizer plugin to create a stats.html file in the stats folder
+     * this sizes (raw, gzip) are different from the sizes indicated by vite build
+     * The Visualizer “Rendered” size is uncompressed, pre‑minify module size while Vite's output the size of the minified bundle on disk after build.
+     * The visualizer’s gzip size is a sum of per‑module gzips, while Vite’s output of the gzipped bundle on disk after build.     * 
+     */
+    visualizer({
+      filename: "stats/stats.html",
+      template: "treemap", // or "sunburst", "network"
+      gzipSize: true
+    }),
     VitePWA({
+      // service worker file name
+      filename: 'service-worker.js',
       // registering done by vite-plugin-pwa
       registerType: 'autoUpdate',
-      // https://vite-pwa-org.netlify.app/guide/service-worker-strategies-and-behaviors.html#service-worker-strategies
+      // service worker strategies: 'generateSW' (default) | 'injectManifest'
       strategies: 'generateSW',
+      // provide manifest and SW during dev if enabled
       devOptions: {
-        // enable manifest + SW in dev so /manifest.webmanifest is served
-        enabled: true
+        enabled: true // creates dev-dist folder with manifest.json and service-worker.js
       },
-      filename: 'service-worker.js',
-      // content copied to public/manifest.json
+      // webmanifest file name
+      manifestFilename: 'manifest.json',
+      // content copied to /manifest.webmanifest
       manifest: {
         id: 'gametimer.org',
         name: 'GameTimer',

@@ -122,7 +122,6 @@ export default {
     }
   },
 
-
   watch: {
     'modelValue.show': function () {
       // this could also be done on mounted

@@ -5,6 +5,9 @@
 
 ## Changelog
 
+v1.0.1
+- some more cleanup
+
 v1.0.0
 - update dependencies and linting
 

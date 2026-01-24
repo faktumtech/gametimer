@@ -38,7 +38,7 @@ FROM nginx:alpine
 RUN rm /usr/share/nginx/html/*
 
 # Copy optimized docker_nginx.conf that enables gzip_static and spa
-COPY docker_nginx_spa.conf /etc/nginx/nginx.conf
+COPY scripts/docker_nginx_spa.conf /etc/nginx/nginx.conf
 
 # Build to nginx web dir
 COPY dist /usr/share/nginx/html
