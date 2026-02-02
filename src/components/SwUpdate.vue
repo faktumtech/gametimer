@@ -8,9 +8,7 @@
   >
     <v-card>
       <v-card-title>
-        <h3 class="headline mb-0">
-          Update available
-        </h3>
+        Update available
       </v-card-title>
       <v-card-text>
         An update of this app is available. Please refresh.

@@ -62,7 +62,10 @@ export default defineConfig([
         ecmaVersion: 'latest',
         sourceType: 'module'
       },
-      globals: globals.browser
+      globals: {
+        ...globals.browser,
+        ...globals.node // needed also in client code when accessing process.env.NODE_ENV during development
+      }
     },
     plugins: {
       vue: pluginVue,

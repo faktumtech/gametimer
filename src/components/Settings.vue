@@ -118,7 +118,7 @@ export default {
       maxTime: null,
       alertTime: null,
       dark: null,
-      appVersion: window.PACKAGE_VERSION || '0'
+      appVersion: typeof process.env.PACKAGE_VERSION !== 'undefined' ? process.env.PACKAGE_VERSION : '0' // string
     }
   },
 
